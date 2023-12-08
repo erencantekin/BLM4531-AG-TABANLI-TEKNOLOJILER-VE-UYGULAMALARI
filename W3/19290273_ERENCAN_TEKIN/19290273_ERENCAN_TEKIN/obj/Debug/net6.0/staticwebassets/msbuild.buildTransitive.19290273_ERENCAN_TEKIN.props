@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\19290273_ERENCAN_TEKIN.props" />
+</Project>
