@@ -1,0 +1,31 @@
+﻿@page
+@using System.Data.SqlClient;
+
+@{
+    try
+    {
+        String TaskID = Request.Query["TaskID"];
+        String UserID = Request.Query["UserID"];
+        TempData["UserID"] = UserID;
+        String connectionString = "Data Source=.\\sqlexpress;Initial Catalog=tododatabase;Integrated Security=True";
+        using(SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            String sql = "DELETE FROM todotasks WHERE TaskID=@TaskID AND UserID=@UserID";
+            using(SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@TaskID", TaskID);
+                command.Parameters.AddWithValue("@UserID", UserID);
+                command.ExecuteNonQuery();
+            }
+        }
+
+    }
+    catch(Exception ex)
+    {
+
+    }
+
+    Response.Redirect("/Home");
+}
