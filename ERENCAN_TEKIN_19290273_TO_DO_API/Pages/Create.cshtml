@@ -1,0 +1,178 @@
+﻿@page
+@model ERENCAN_TEKIN_19290273_TO_DO_API.Pages.CreateModel
+@{
+}
+
+
+<br>
+<h2>New To-Do Task</h2>
+@if (Model.errorMsg.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role ='alert'>
+        <strong>@Model.errorMsg</strong>
+        <button type ='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+
+
+<body>
+    <form method="POST">
+        <main class="table">
+            @if (Model.successMsg.Length > 0)
+            {
+                <div class="row mb-3">
+                    <div class="col-sm-9">
+                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            <strong>@Model.successMsg</strong>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-labe='Close'></button>
+                        </div>
+                    </div>
+                </div>
+            }
+            <section class="table__body">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Task Title</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="TaskTitle" value="@Model.todotaskInfo.TaskTitle">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Task Description</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="TaskDescription" value="@Model.todotaskInfo.TaskDescription">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Task Priority</label>
+                                    <div class="col-sm-6">
+                                        <input type="radio" name="radioButtonOptionCreate" value="0" checked />MIN
+                                        &nbsp;
+                                        &nbsp;
+                                        &nbsp;
+                                        <input type="radio" name="radioButtonOptionCreate" value="1" />AVG
+                                        &nbsp;
+                                        &nbsp;
+                                        &nbsp;
+                                        <input type="radio" name="radioButtonOptionCreate" value="2" />MAX
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="row mb-3">
+                                    <div class="offset-sm-3 col-sm-3 d-grid">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    <div class="col-sm-3 d-grid">
+                                        <a class="btn btn-outline-primary" href="/Home" role="button">Cancel</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <style>
+
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        font-family: sans-serif;
+                    }
+
+                    main.table {
+                        overflow: hidden;
+                        width: 82vw;
+                        height: 55vh;
+                        backdrop-filter: blur(7px);
+                        border-radius: .8rem;
+                        box-shadow: 0 .4rem .8rem #0005;
+                        background-color: #ffff;
+
+                    }
+
+                    body {
+                        min-height: 100vh;
+                        display: flex;
+                        align-items: center;
+                        background: linear-gradient(to right, #eeddcc 0%,#9fd9e6 100%);
+                        justify-content: center;
+                        
+                    }
+
+                    .table__body {
+                        overflow: auto;
+                        width: 95%;
+                        max-height: calc(89% - 1.6rem);
+                        margin: .8rem auto;
+                        border-radius: .6rem;
+                        background-color: #ffff;
+                    }
+
+                    .table__body::-webkit-scrollbar-thumb {
+                        border-radius: .0rem;
+                        visibility: hidden;
+                    }
+
+                    .table__body::-webkit-scrollbar {
+                        width: 0.0rem;
+                        height: 0.0rem;
+                    }
+
+                    table {
+                        width: 100%;
+                    }
+
+                    tbody tr {
+                        --delay: .1s;
+                        transition: .5s ease-in-out var(--delay), background-color 0s;
+                    }
+
+                    tbody tr.hide {
+                        opacity: 0;
+                        transform: translateX(100%);
+                    }
+
+                    table, td {
+                        border-collapse: collapse;
+                        padding: 1rem;
+                        text-align: left;
+                    }
+
+                    tbody tr:nth-child(even) {
+                        background-color: #0000000b;
+                    }
+
+                    tbody tr td {
+                        transition: .2s ease-in-out;
+                    }
+
+                    tbody tr.hide td {
+                        padding: 0;
+                        font: 0 / 0 sans-serif;
+                        transition: .2s ease-in-out .5s;
+                    }
+                    
+                </style>
+            </section>
+        </main>
+    </form>
+</body>
